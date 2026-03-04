@@ -4,7 +4,7 @@ A modern Next.js 14 website for The Fortier Group — an air traffic control tra
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router)
+- **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
@@ -73,6 +73,13 @@ A modern Next.js 14 website for The Fortier Group — an air traffic control tra
 - `pnpm build` — Build for production
 - `pnpm start` — Start production server
 - `pnpm lint` — Run ESLint
+
+## Deploy on Vercel
+
+1. Push this repo to GitHub and import the project in [Vercel](https://vercel.com).
+2. Vercel will detect Next.js and use `pnpm run build` automatically.
+3. If the app uses env vars (e.g. `NEXT_PUBLIC_EMPLOYEE_PASS`), add them in **Project → Settings → Environment Variables**.
+4. Deploy; every push to `main` will trigger a new deployment.
 
 ## Security Features
 
