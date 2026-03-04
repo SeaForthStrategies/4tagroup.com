@@ -25,9 +25,9 @@ export function Hero() {
           sizes="100vw"
         />
       </motion.div>
-      {/* Directional overlays: strong left, fade to transparent right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/30" />
+      {/* Directional overlays: keep text readable, let more image show through */}
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/92 via-navy/75 to-navy/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy/65 via-transparent to-navy/30" />
 
       <div className="relative z-10 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-20 md:py-28">
         <div className="max-w-[640px]">

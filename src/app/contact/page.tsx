@@ -16,7 +16,7 @@ const contactInfo = [
   {
     label: "Phone",
     value: SITE_CONFIG.phone,
-    href: `tel:${SITE_CONFIG.phone.replace(/[^0-9]/g, "")}`,
+    href: `tel:+1${SITE_CONFIG.phone.replace(/[^0-9]/g, "")}`,
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75}
         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -52,7 +52,6 @@ const inputBase = "w-full px-4 py-3 rounded-xl border bg-white text-sm text-gray
 export default function ContactPage() {
   const [form, setForm] = useState<FormData>({ name: "", email: "", phone: "", message: "", honeypot: "" });
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success">("idle");
   const formSectionRef = useRef(null);
   const formSectionInView = useInView(formSectionRef, { once: true, margin: "-60px" });
@@ -76,16 +75,31 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (form.honeypot || !validate()) return;
-    setSubmitting(true);
-    setTimeout(() => { setSubmitting(false); setStatus("success"); setForm({ name: "", email: "", phone: "", message: "", honeypot: "" }); }, 1000);
+
+    const subject = `Contact from ${form.name.trim()}`;
+    const bodyLines = [
+      `Name: ${form.name.trim()}`,
+      `Email: ${form.email.trim()}`,
+      form.phone.trim() ? `Phone: ${form.phone.trim()}` : null,
+      "",
+      "Message:",
+      form.message.trim(),
+    ].filter(Boolean);
+    const body = bodyLines.join("\n");
+
+    const mailto = `mailto:${encodeURIComponent(SITE_CONFIG.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+
+    setStatus("success");
+    setForm({ name: "", email: "", phone: "", message: "", honeypot: "" });
   };
 
   return (
     <>
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden" style={{ paddingTop: "max(5rem, calc(5rem + env(safe-area-inset-top)))" }}>
-        <Image src={IMAGES.terminal} alt="" fill priority className="object-cover opacity-40" sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/40" />
+        <Image src={IMAGES.terminal} alt="" fill priority className="object-cover opacity-60" sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/88 via-navy/68 to-navy/38" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20 md:py-28">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red mb-4">Contact Us</p>
@@ -150,8 +164,8 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-base font-semibold text-navy mb-1">Message sent</p>
-                  <p className="text-sm text-gray-500">{CONTACT_PAGE.form.successMessage}</p>
+                  <p className="text-base font-semibold text-navy mb-1">Email app opened</p>
+                  <p className="text-sm text-gray-500">Your message has been prepared in your email app. Please send it from there to complete your request.</p>
                   <button onClick={() => setStatus("idle")} className="mt-6 text-sm font-semibold text-aviation-blue hover:text-aviation-blue-light transition-colors">
                     Send another message
                   </button>
@@ -194,19 +208,11 @@ export default function ContactPage() {
                     {errors.message && <p id="message-error" className="mt-1.5 text-xs text-red-500">{errors.message}</p>}
                   </div>
 
-                  <Button type="submit" disabled={submitting} className="w-full mt-2">
-                    {submitting ? (
-                      <><svg className="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                      </svg>Sending...</>
-                    ) : (
-                      <>{CONTACT_PAGE.form.submitButton}
-                        <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </>
-                    )}
+                  <Button type="submit" className="w-full mt-2">
+                    {CONTACT_PAGE.form.submitButton}
+                    <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                   </Button>
                 </form>
               )}

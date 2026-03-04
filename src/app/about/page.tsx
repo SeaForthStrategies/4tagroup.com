@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SectionWrapper } from "@/components/ui";
-import { StatBar, CompanyProfile, FounderBio, AboutHeroContent } from "@/components/sections";
+import { CompanyProfile, FounderBio, AboutHeroContent } from "@/components/sections";
 import { ABOUT_PAGE, IMAGES } from "@/lib/constants";
 import { aboutMetadata } from "@/lib/metadata";
 
@@ -16,11 +16,11 @@ export default function AboutPage() {
           alt="Vintage aircraft representing aviation heritage"
           fill
           priority
-          className="object-cover opacity-35"
+          className="object-cover opacity-55"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/88 via-navy/72 to-navy/38" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy/55" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20 md:py-28">
           <AboutHeroContent headline={ABOUT_PAGE.headline} />
@@ -28,7 +28,7 @@ export default function AboutPage() {
       </section>
 
       {/* Intro text + image mosaic */}
-      <SectionWrapper className="py-16 sm:py-24 md:py-32 bg-white">
+      <SectionWrapper className="py-10 sm:py-14 md:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
             <div>
@@ -52,7 +52,6 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
-      <StatBar />
       <FounderBio />
       <CompanyProfile />
     </>

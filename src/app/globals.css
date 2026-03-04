@@ -21,6 +21,7 @@
   --font-sans: var(--font-body), ui-sans-serif, system-ui;
   --font-heading: var(--font-display), ui-sans-serif, system-ui;
   --font-body: var(--font-body), ui-sans-serif, system-ui;
+  --font-accent: var(--font-accent), ui-serif, Georgia, serif;
 
   /* Layout — consistent container padding and section spacing */
   --container-padding-inline: 1rem;   /* 16px mobile */

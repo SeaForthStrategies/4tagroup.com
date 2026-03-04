@@ -1,6 +1,6 @@
 # The Fortier Group Website
 
-A modern Next.js 14 website for The Fortier Group — an air traffic control training, consulting, and quality assurance company.
+A modern Next.js 16 website for The Fortier Group — an air traffic control training, consulting, and quality assurance company.
 
 ## Tech Stack
 
@@ -8,7 +8,7 @@ A modern Next.js 14 website for The Fortier Group — an air traffic control tra
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
-- **Fonts:** DM Sans (body) + Syne (headings) via next/font
+- **Fonts:** Plus Jakarta Sans (body + headings) via next/font
 
 ## Getting Started
 
@@ -21,9 +21,10 @@ A modern Next.js 14 website for The Fortier Group — an air traffic control tra
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-org/4tagroup.com.git
+   git clone https://github.com/4tagroup/4tagroup.com.git
    cd 4tagroup.com
    ```
+   (Replace `4tagroup` with your GitHub org or username if different.)
 
 2. Install dependencies:
    ```bash
@@ -108,10 +109,13 @@ Development password: `demo123`
 
 Image placeholders are in place throughout the site. When adding real images:
 
-1. Use only royalty-free sources (Unsplash, Pexels, public domain)
-2. Use `next/image` component for optimization
-3. Provide proper `width` and `height` attributes
-4. Add descriptive `alt` text
+1. Place image files in `public/images/`. The site expects assets such as `fortier_logo.png` (favicon), hero/background images, and any images referenced in `src/lib/constants.ts` (e.g. `IMAGES.hero`, `IMAGES.logo`).
+2. Use only royalty-free sources (Unsplash, Pexels, public domain)
+3. Use `next/image` component for optimization
+4. Provide proper `width` and `height` attributes
+5. Add descriptive `alt` text
+
+**Before first deployment:** Ensure all files listed under `IMAGES` in `src/lib/constants.ts` exist in `public/images/` so the site builds and loads correctly.
 
 ## Performance Targets
 

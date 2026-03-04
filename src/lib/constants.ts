@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   name: "The Fortier Group",
-  tagline: "Professional ATC Services and Instruction",
+  tagline: "Air Traffic Control Training, Consulting, and More",
   phone: "(760) 532-4772",
   address: "2100 Palomar Airport Rd. #214-56, Carlsbad, CA 92011",
   email: "Tony@4TAGroup.com",
@@ -54,7 +54,13 @@ export const ABOUT_PAGE = {
   body: "The Fortier Group was founded with the idea that the best instruction for Air Traffic Controllers comes from experienced, accomplished Air Traffic Controllers, those that have proven themselves over time. We are proud of our Instructors and Engineers and will continue to provide exceptional training on ATC systems and excellent solutions for your Air Traffic and Safety concerns.",
   founder: {
     heading: "Founder",
-    bio: "Larry Fortier Jr. (1933-2012), joined the US Air Force in 1951 and served in Korea as an Air Traffic Controller. Upon completion of his tour and enlistment, he turned down opportunities to play professional baseball to begin a career with the CAA- later the FAA. He served as a controller, supervisor, and manager at several facilities before his appointment as the Director of Air Traffic Systems Requirements. After his retirement from the FAA in 1985, Larry continued to advise other organizations on Air Traffic systems and was later Chairman of the Board for the Air Traffic Control Association. His vision for The Fortier Group continues today.",
+    name: "Larry Fortier Jr.",
+    years: "1933 – 2012",
+    bioParagraphs: [
+      "Larry Fortier Jr. joined the US Air Force in 1951 and served in Korea as an Air Traffic Controller. Upon completion of his tour and enlistment, he turned down opportunities to play professional baseball to begin a career with the CAA—later the FAA.",
+      "He served as a controller, supervisor, and manager at several facilities before his appointment as the Director of Air Traffic Systems Requirements. After his retirement from the FAA in 1985, Larry continued to advise other organizations on Air Traffic systems and was later Chairman of the Board for the Air Traffic Control Association.",
+    ],
+    closing: "His vision for The Fortier Group continues today.",
   },
   companyProfile: {
     heading: "Company Profile",
@@ -153,6 +159,9 @@ export const CONTACT_PAGE = {
 
 export const FOOTER = {
   copyright: "The Fortier Group. All rights reserved.",
+  /** Expandable disclosures text (e.g. legal, WOSB, disclaimer). Edit in constants. */
+  disclosures:
+    "The Fortier Group is a Woman Owned Small Business (WOSB). Content on this site is for general information only and does not constitute professional advice. Contact us for specific inquiries.",
 } as const;
 
 export const IMAGE_CREDITS = [
