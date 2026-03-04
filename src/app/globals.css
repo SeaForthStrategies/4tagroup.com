@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand */
+  --color-navy: #0a1f44;
+  --color-navy-light: #132952;
+  --color-aviation-blue: #1b5cff;
+  --color-aviation-blue-light: #2563eb;
+  --color-red: #cc1b1b;
+  --color-red-light: #e53535;
+
+  /* Neutrals — pure white base, no color tint */
+  --color-background: #ffffff;
+  --color-surface: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-text: #0f172a;
+  --color-text-muted: #6b7280;
+  --color-white: #ffffff;
+
+  /* Fonts */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui;
+  --font-heading: var(--font-display), ui-sans-serif, system-ui;
+  --font-body: var(--font-body), ui-sans-serif, system-ui;
+
+  /* Layout — consistent container padding and section spacing */
+  --container-padding-inline: 1rem;   /* 16px mobile */
+  --section-block: 5rem;              /* 80px base */
+  --section-block-lg: 7rem;           /* 112px large */
+  --touch-min: 44px;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), ui-sans-serif, system-ui;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Form inputs */
+input, textarea {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 8px;
+}
+input:focus, textarea:focus {
+  border-color: var(--color-aviation-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(27, 92, 255, 0.12);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+::selection {
+  background: var(--color-aviation-blue);
+  color: white;
+}
+
+/* Logo filters */
+.logo-brand-light {
+  filter: brightness(0.9) contrast(1.05) saturate(1.1);
+}
+.logo-brand-dark {
+  filter: brightness(1.15) contrast(1.1);
+}
+
+/* Shake animation for employee portal */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}

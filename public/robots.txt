@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow employee portal from indexing
+Disallow: /employees
+
+# Sitemap
+Sitemap: https://4tagroup.com/sitemap.xml
